@@ -364,7 +364,7 @@ var quick_chat = jQuery.extend(quick_chat || {}, {
                     var next_update = Math.max(0, quick_chat.timeout_refresh_messages * 1000 - (Date.now() - start_time));
                     setTimeout(function(){
                         quick_chat.update_messages();
-                    }, quick_chat.next_update);
+                    }, next_update);
                 }
             },
             'json'
