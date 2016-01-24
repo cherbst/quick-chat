@@ -581,7 +581,7 @@ class Quick_Chat {
         $rooms = implode('", "', esc_sql((array)$_POST['rooms']));
 
         $startTime = time();
-        while((time()-$startTime)<=20){
+       // while((time()-$startTime)<=20){
             $sql = 'SELECT id, wpid, room, timestamp, UNIX_TIMESTAMP(timestamp) AS unix_timestamp, alias, status, message FROM '
                                                     .$quick_chat_messages_table_name.' WHERE room IN ("'.$rooms.'") '
                                                     .' AND timestamp > FROM_UNIXTIME('.esc_sql($_POST['last_timestamp']).') '
@@ -603,10 +603,10 @@ class Quick_Chat {
                 echo $response;
                 ob_flush(); flush();
                 exit;
-            }else{
+            }/*else{
                 sleep($this->options['timeout_refresh_messages']);
             }
-        }
+        }*/
 
         $response = json_encode(array('no_participation' => $this->no_participation, 'success'=> 0));
 
