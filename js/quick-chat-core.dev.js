@@ -257,6 +257,7 @@ var quick_chat = jQuery.extend(quick_chat || {}, {
         }, 1500);
     },
     update_messages: function(){
+        var start_time = Date.now();
         jQuery.post(quick_chat.ajaxurl, {
                 action: 'quick-chat-ajax-update-messages',
                 last_timestamp: quick_chat.last_timestamp,
@@ -359,8 +360,12 @@ var quick_chat = jQuery.extend(quick_chat || {}, {
                     quick_chat.last_timestamp = updates[updates.length-1].unix_timestamp;
                 }
 
-                if(!quick_chat.is_user_inactive())
-                    quick_chat.update_messages();
+                if(!quick_chat.is_user_inactive()) {
+                    var next_update = Math.max(0, quick_chat.timeout_refresh_messages * 1000 - (Date.now() - start_time));
+                    setTimeout(function(){
+                        quick_chat.update_messages();
+                    }, quick_chat.next_update);
+                }
             },
             'json'
         );

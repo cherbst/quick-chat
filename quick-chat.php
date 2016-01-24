@@ -333,7 +333,8 @@ class Quick_Chat {
                 'ajaxurl' => admin_url('admin-ajax.php', (is_ssl() ? 'https' : 'http')),
                 'user_id' => $this->user_id,
                 'version' => self::version,
-                'debug_mode' => $debug_mode
+                'debug_mode' => $debug_mode,
+                'timeout_refresh_messages' => $this->options['timeout_refresh_messages']
             )
         );
     }
