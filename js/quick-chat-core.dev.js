@@ -359,16 +359,16 @@ var quick_chat = jQuery.extend(quick_chat || {}, {
 
                     quick_chat.last_timestamp = updates[updates.length-1].unix_timestamp;
                 }
-
-                if(!quick_chat.is_user_inactive()) {
-                    var next_update = Math.max(0, quick_chat.timeout_refresh_messages * 1000 - (Date.now() - start_time));
-                    setTimeout(function(){
-                        quick_chat.update_messages();
-                    }, next_update);
-                }
             },
             'json'
-        );
+        ).always(function() {
+             if(!quick_chat.is_user_inactive()) {
+                var next_update = Math.max(0, quick_chat.timeout_refresh_messages * 1000 - (Date.now() - start_time));
+                setTimeout(function(){
+                    quick_chat.update_messages();
+                }, next_update);
+            }
+        });
     },
     update_users: function(){
         quick_chat.update_users_counter++;
