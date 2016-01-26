@@ -146,6 +146,7 @@ class Quick_Chat_Widget extends WP_Widget {
             echo $before_widget;
             echo $before_title.$title.$after_title;
 
+            do_action('quick_chat_before_widget');
 
             echo $quick_chat->quick_chat($height, $room, $userlist, $userlist_position, $smilies, $send_button, $loggedin_visible, $guests_visible, $avatars, $counter);
 
