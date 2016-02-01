@@ -532,7 +532,7 @@ jQuery("div.quick-chat-smile").on('click', function() {
     });
 });
 
-jQuery(document).on('click', "div.quick-chat-history-alias a", function(e) {
+/*jQuery(document).on('click', "div.quick-chat-history-alias a", function(e) {
     e.preventDefault();
     var input_textarea = jQuery(this).parents('.quick-chat-container').find('.quick-chat-message');
     var this_element = jQuery(this);
@@ -541,7 +541,7 @@ jQuery(document).on('click', "div.quick-chat-history-alias a", function(e) {
         jQuery(input_textarea).quick_chat_insert_at_caret('@'+jQuery(this_element).text()+': ');
         jQuery(this_element).fadeTo(100, 1);
     });
-});
+});*/
 
 jQuery(document).on('click', "div.quick-chat-single-user a", function(e) {
     e.preventDefault();
