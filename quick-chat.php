@@ -598,6 +598,9 @@ class Quick_Chat {
                     } else {
                         $v->avatar = get_avatar($v->wpid, $this->options['avatar_size'], '', $v->alias);
                     }
+					$user = get_user_by('login', $v->alias);
+					if ($user)
+						$v->alias_link = get_author_posts_url($user->ID);
                 }
                 $response = json_encode(array('no_participation' => $this->no_participation, 'success'=> 1,'messages'=>$messages));
 

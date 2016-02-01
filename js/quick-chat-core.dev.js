@@ -193,7 +193,7 @@ var quick_chat = jQuery.extend(quick_chat || {}, {
         if(alias == quick_chat.user_name || sys_mes == true  || quick_chat.no_participation == 1)
             string += alias;
         else
-            string += '<a href="" title="'+quick_chat.i18n.reply_to_s.replace('%s', alias)+'">'+alias+'</a>';
+            string += '<a href="' + single_message.alias_link + '" title="'+quick_chat.i18n.reply_to_s.replace('%s', alias)+'">'+alias+'</a>';
 
         string += '</div>';
 
