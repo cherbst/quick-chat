@@ -4,7 +4,7 @@ Plugin Name: Quick Chat
 Plugin URI: http://www.techytalk.info/wordpress-plugins/quick-chat/
 Description: Self hosted WordPress chat plugin supporting private chat, chat rooms, avatars, user list, words filtering, smilies, caching plugins and more.
 Author: Marko Martinović, Christoph Herbst
-Version: 4.13-konnektiv
+Version: 4.13.1-konnektiv
 Author URI: http://www.techytalk.info
 License: GPL2
 
