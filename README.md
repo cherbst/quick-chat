@@ -1,20 +1,27 @@
 # Quick Chat #
 **Contributors:** Marko-M
-  
+
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CZQW2VZNHMGGN
-  
+
 **Tags:** chat, ajax chat, simple chat, live chat
-  
+
 **Requires at least:** 3.3
-  
-**Tested up to:** 3.6
-  
+
+**Tested up to:** 4.4.2
+
 **License:** GPL2
-  
+
 **Stable tag:** trunk
-  
+
 
 Self hosted WordPress chat plugin supporting private chat, chat rooms, avatars, user list, words filtering, smilies, caching plugins and more.
+
+## Information about this fork ##
+This fork adds the following new features:
+* Click on a username in the chatwindow opens the author link of that user
+* Do not sleep in server side PHP code. Instead use a polling interval on the client. This prevents
+long load times on single threaded servers.
+* Adds an action before the chat window content for themes to hook into.
 
 ## Description ##
 WordPress chat plugin supporting private chat, chat rooms, avatars, user list, words filtering, smilies, caching plugins and more. Quick Chat is self hosted chat solution. This means that your chat messages are stored inside your local WordPress database and are totally under your control. Because of that there are no limits or monthly fees for number of chat users or messages, these are limited only by your web server capabilities.
@@ -24,7 +31,7 @@ WordPress chat plugin supporting private chat, chat rooms, avatars, user list, w
 <h4>Quick Chat feature highlights</h4>
 
 ***   **New in v4.10**:** Implement automatic private messages and chat rooms daily cleanup using WordPress cron API
-  
+
 *   Add PHP caching WordPress plugins like WP Super Cache or W3 Total Cache compatibility (See FAQ for more)
 *   Add feature to configure which WordPress user role has Quick Chat moderator capability
 *   Avoid losing CSS customizations after Quick Chat update (See FAQ for more)
@@ -118,7 +125,7 @@ Shortcode attributes details:
 
 * height - You control Quick Chat height by giving height attribute to the [quick-chat] shortcode. For example to have 600 pixels high Quick Chat message history container embedded on your page you would add [quick-chat height="600"] inside page where you want your chat to appear. If you omit height attribute default height is 400 pixels.
 *** room - You can give room attribute to the [quick-chat] shortcode. So if you want your embedded chat to show chat room identified by word "musictalk" you will display this chat like this:** [quick-chat room="musictalk"]. Every chat (sidebar or in-post) with "musictalk" room attribute will show this same content. If you omit room shortcode attribute, default behavior is to show predefined chat room identified by the "default" word.
-  
+
 * userlist - If you wan't to hide user list you can set this shortcode attribute value to 0 like this [quick-chat userlist="0"].
 * userlist_position - To use embedded chat with user list on the left side of your chat room you can embedd it into your post or page using [quick-chat userlist_position="left"] shortcode. You can also use "top" and "right" values for userlist_position shortcode attribute.
 * smilies - If you wan't to hide emoticons container you can set this shortcode attribute value to 0 like this [quick-chat smilies="0"].
