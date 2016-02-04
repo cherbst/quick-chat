@@ -166,6 +166,8 @@ class Quick_Chat {
         add_action( 'wp_ajax_nopriv_quick-chat-ajax-username-check', array($this, 'username_check_ajax_handler'));
         add_action( 'wp_ajax_quick-chat-ajax-username-check', array($this, 'username_check_ajax_handler'));
 
+        add_filter( 'badgeos_activity_triggers', array($this, 'badgeos_triggers'));
+
         register_activation_hook(__FILE__, array($this, 'clear_cache'));
         register_deactivation_hook(__FILE__, array($this, 'clear_cache'));
 
@@ -189,6 +191,11 @@ class Quick_Chat {
                 $this->deschedule_private_clean_update();
             }
         }
+    }
+
+    function badgeos_triggers($triggers) {
+        $triggers["quick_chat_new_message"] = __('Send a new chat message', 'quick-chat');
+        return $triggers;
     }
 
     public function schedule_target_clean_update(){
@@ -562,6 +569,8 @@ class Quick_Chat {
             }
 
             $wpdb->query('INSERT INTO '.$quick_chat_messages_table_name.' (wpid, room, timestamp, alias, status, ip, message) VALUES ( "'.$this->user_id.'", "'.esc_sql($_POST['room']).'", NOW(), "'.(($_POST['sys_mes'] == 'true') ? 'quick_chat': esc_sql($this->user_name)).'", '.$this->user_status.', "'.$this->user_ip.'", "'.esc_sql($_POST['message']).'");');
+
+            do_action("quick_chat_new_message", $this->user_id, $_POST['room'], $_POST['message']);
         }
         $response = json_encode(array('no_participation' => $this->no_participation));
 

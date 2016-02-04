@@ -22,6 +22,7 @@ This fork adds the following new features:
 * Do not sleep in server side PHP code. Instead use a polling interval on the client. This prevents
 long load times on single threaded servers.
 * Adds an action before the chat window content for themes to hook into.
+* Adds a BadgeOS trigger for new messages
 
 ## Description ##
 WordPress chat plugin supporting private chat, chat rooms, avatars, user list, words filtering, smilies, caching plugins and more. Quick Chat is self hosted chat solution. This means that your chat messages are stored inside your local WordPress database and are totally under your control. Because of that there are no limits or monthly fees for number of chat users or messages, these are limited only by your web server capabilities.
